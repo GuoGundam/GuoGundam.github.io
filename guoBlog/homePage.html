@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        .blog-header {
+            background: #000;
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-header h1 {
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInRight 1s ease forwards;
+        }
+        .blog-header .lead {
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInRight 1s ease 0.3s forwards;
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: twinkle 4s infinite;
+        }
+        .blog-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: twinkle 4s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        .blog-header .container {
+            position: relative;
+            z-index: 1;
+        }
+        .article-card {
+            transition: transform 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="#">我的博客</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">文章</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 博客头部 -->
+    <header class="blog-header text-center">
+        <div class="container">
+            <h1 class="display-4">欢迎来到我的博客</h1>
+            <p class="lead">分享技术、生活和有趣的故事</p>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <div class="container">
+        <div class="row">
+            <!-- 文章列表 -->
+            <div class="col-lg-8">
+                <!-- 文章卡片 -->
+                <article class="article-card card">
+                    <div class="card-body">
+                        <h2 class="card-title">这是一篇示例文章标题</h2>
+                        <div class="text-muted mb-3">
+                            <small>
+                                <i class="bi bi-calendar"></i> 2024-03-20
+                                <i class="bi bi-person ms-3"></i> 作者
+                            </small>
+                        </div>
+                        <p class="card-text">这是文章的摘要内容。在这里，您可以展示文章的前几行内容，让读者对文章有初步的了解...</p>
+                        <a href="#" class="btn btn-primary">阅读更多</a>
+                    </div>
+                </article>
+
+                <!-- 分页 -->
+                <nav aria-label="文章分页">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">上一页</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">下一页</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- 侧边栏 -->
+            <div class="col-lg-4">
+                <!-- 关于我 -->
+                <div class="sidebar-widget">
+                    <h4>关于我</h4>
+                    <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="头像">
+                    <p>这里是关于我的简短介绍。您可以描述您的专业领域、兴趣爱好等。</p>
+                </div>
+
+                <!-- 分类 -->
+                <div class="sidebar-widget">
+                    <h4>文章分类</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none">技术 (10)</a></li>
+                        <li><a href="#" class="text-decoration-none">生活 (5)</a></li>
+                        <li><a href="#" class="text-decoration-none">随笔 (3)</a></li>
+                    </ul>
+                </div>
+
+                <!-- 标签云 -->
+                <div class="sidebar-widget">
+                    <h4>标签云</h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary">JavaScript</span>
+                        <span class="badge bg-secondary">Python</span>
+                        <span class="badge bg-success">生活</span>
+                        <span class="badge bg-danger">技术</span>
+                        <span class="badge bg-warning">随笔</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>关于博客</h5>
+                    <p>这是一个个人博客，用于分享技术和生活。</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>联系方式</h5>
+                    <p>邮箱：example@email.com</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 我的博客. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
